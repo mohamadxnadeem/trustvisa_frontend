@@ -56,6 +56,7 @@ function MyApp({ Component, pageProps }) {
                     />
                 </noscript>
                 {/* End Facebook Pixel Code */}
+                {/* Ensure no Google Translate script here */}
             </Head>
 
             {!loading ? (

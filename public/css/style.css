@@ -425,6 +425,21 @@ section > .container-fluid {
     max-width: var(--container-width);
   }
 }
+
+.goog-te-gadget-simple {
+  background-color: #FFF;
+  border: none !important;
+  font-size: 10pt;
+  display: inline-block;
+  padding-top: 1px;
+  padding-bottom: 2px;
+  cursor: pointer;
+}
+
+#google_translate_element .goog-te-gadget-simple img {
+  display: none !important;
+}
+
 /*=== Default Form ===*/
 .form-control, .input-text {
   height: calc(2.25rem + 27px);
@@ -13520,3 +13535,4 @@ Sidebar
 .footer-bottom .copyright-text a:hover {
   color: #ffffff;
 }
+
