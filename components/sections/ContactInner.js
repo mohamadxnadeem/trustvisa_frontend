@@ -63,14 +63,16 @@ const ContactInner = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const formDataObj = new FormData();
+    Object.keys(formData).forEach(key => {
+      formDataObj.append(key, formData[key]);
+    });
+
     try {
       console.log('Form Data:', formData);
       const response = await fetch("https://trustvisaapi-production.up.railway.app/api/application/create/", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: formDataObj,
       });
 
       if (response.ok) {
@@ -114,7 +116,6 @@ const ContactInner = () => {
                         placeholder="First Name"
                         onChange={handleInputChange}
                         required // Field is now required
-
                       />
                     </div>
                   </div>
@@ -127,7 +128,6 @@ const ContactInner = () => {
                         placeholder="Last Name"
                         onChange={handleInputChange}
                         required // Field is now required
-
                       />
                     </div>
                   </div>
@@ -142,7 +142,6 @@ const ContactInner = () => {
                         placeholder="Email"
                         onChange={handleInputChange}
                         required // Field is now required
-
                       />
                     </div>
                   </div>
@@ -171,7 +170,6 @@ const ContactInner = () => {
                         className="form-control"
                         onChange={handleInputChange}
                         required // Field is now required
-
                       >
                         <option value="">Select English Level</option>
                         <option value="poor">Poor</option>
@@ -193,7 +191,6 @@ const ContactInner = () => {
                         value={formData.contact_number}
                         onChange={handlePhoneChange}
                         required // Field is now required
-
                       />
                     </div>
                   </div>
@@ -205,8 +202,7 @@ const ContactInner = () => {
                     id="from_country"
                     className="form-control"
                     onChange={handleInputChange}
-                                            required // Field is now required
-
+                    required // Field is now required
                   >
                     <option value="">Select Your Country</option>
                     {sortedCountries.map((country) => (
@@ -248,11 +244,10 @@ const ContactInner = () => {
                 </div>
 
               </form>
-
             ) : (
               <div className="thank-you-message">
                 <h3>Thank you for your application!</h3>
-                <p>We will get back to you soon.</p>
+                <p>Please check your email for the next steps</p>
               </div>
             )}
           </div>
